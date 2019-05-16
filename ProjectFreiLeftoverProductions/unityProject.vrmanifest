@@ -1,0 +1,16 @@
+{
+  "source": "Unity",
+  "applications": [
+    {
+      "app_key": "application.generated.unity.projectfreileftoverproductions.exe",
+      "launch_type": "url",
+      "url": "steam://launch/",
+      "action_manifest_path": "D:\\HKU\\Project vrij\\ProjectFrei_LeftoverProductions\\ProjectFreiLeftoverProductions\\actions.json",
+      "strings": {
+        "en_us": {
+          "name": "ProjectFreiLeftoverProductions [Testing]"
+        }
+      }
+    }
+  ]
+}
