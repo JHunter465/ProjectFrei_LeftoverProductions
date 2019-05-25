@@ -45,7 +45,7 @@ public class LiftGate : MonoBehaviour {
 
 		// Move to openAngle if state is opening, move to closeAngle if state is closing, do nothing if idle
 		if (state == LiftGateState.Opening) {
-			// TODO fix: Idle state can technically never be reached because this code makes it work like a limit
+			// TODO fix: Idle state can technically never be reached because this code makes it work like a limit (practically though, at high speeds this is no problem)
 			transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(0, 0, openAngle), Time.deltaTime * openSpeed);
 		}
 		else if (state == LiftGateState.Closing) {
