@@ -11,7 +11,8 @@ public class CarControls : MonoBehaviour {
 		car = GetComponent<Car>();
 	}
 
-	private void Update() {
+	private void FixedUpdate() {
+		// TODO replace with vr controller trigger as scaling value
 		if (Input.GetKey("w")) {
 			car.Accelerate();
 		}
