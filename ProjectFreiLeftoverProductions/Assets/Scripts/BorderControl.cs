@@ -15,8 +15,10 @@ public class BorderControl : MonoBehaviour {
 	public LiftGate LiftGate => liftGate;
 
 	public void RegisterCar(Car car) {
+		// Add car to the queue
 		queue.Enqueue(car);
 
+		// Load the next car
 		UpdateCurrentCar();
 	}
 
@@ -24,6 +26,7 @@ public class BorderControl : MonoBehaviour {
 		// Only update to a new car if there is no current car
 		if (!currentCar) {
 			if (queue.Count > 0) {
+				// Load next car from the queue
 				currentCar = queue.Dequeue();
 				StartInspection();
 			}
@@ -32,7 +35,7 @@ public class BorderControl : MonoBehaviour {
 
 	private void StartInspection() {
 		if (currentCar.IsPlayerCar) {
-			// Start player inspection
+			// TODO Start player inspection
 		}
 		else {
 			StartAiInspection();
@@ -44,6 +47,7 @@ public class BorderControl : MonoBehaviour {
 	}
 
 	private IEnumerator WaitForInspection() {
+		// Wait till the time it takes to inspect an ai car has passed (debug version counts down in console)
 		if (Debug.isDebugBuild) {
 			for (int i = 0; i < aiInspectionTime; i++) {
 				Debug.Log("Inspecting... " + (aiInspectionTime - i));
@@ -72,7 +76,7 @@ public class BorderControl : MonoBehaviour {
 		// Remove car
 		currentCar = null;
 		// TODO This almost creates a loop. Almost. It's freaky
-		// TODO this code messes up, will probably not work for multiple cars but might
+		// TODO this code messes up (makes it loop like I thought but with an empty currentCar), will probably not work for multiple cars but might
 //		UpdateCurrentCar();
 	}
 }

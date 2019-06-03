@@ -6,10 +6,10 @@ using Vector3 = UnityEngine.Vector3;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Car : MonoBehaviour {
-	[SerializeField] private float maxSpeed = 15;
-	[SerializeField] private float accelerationRate = 1;
-	[SerializeField] private float brakeRate = 3;
-	[SerializeField] private float decelaration = 2;
+	[SerializeField] private float maxSpeed = 10;
+	[SerializeField] private float accelerationRate = 50;
+	[SerializeField] private float brakeRate = 50;
+	[SerializeField] private float decelaration = 3;
 
 	// This is a player car if there is no AiCar component attached to the gameobject;
 	public bool IsPlayerCar => GetComponent<AiCar>() == null;

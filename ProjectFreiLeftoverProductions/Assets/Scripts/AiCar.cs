@@ -16,8 +16,13 @@ public class AiCar : MonoBehaviour {
 	private Car car;
 
 	private void OnValidate() {
+		// Do not allow despawnRadius and targetRadius values below zero
 		if (despawnRadius < 0) {
 			despawnRadius = 0;
+		}
+
+		if (targetRadius < 0) {
+			targetRadius = 0;
 		}
 	}
 
@@ -33,6 +38,7 @@ public class AiCar : MonoBehaviour {
 	}
 
 	private void MoveCar() {
+		// Tell the border control point that this car is now in range (passedInspection flag is to avoid duplicate registration)
 		if (!passedInspection && DistanceXZ(windowPosition.position, target.transform.position) < targetRadius) {
 			inTargetRange = true;
 			target.RegisterCar(car);

@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f1d28e1221df3e4bad034b497c504d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 15
+  maxSpeed: 10
   accelerationRate: 50
   brakeRate: 50
   decelaration: 3
@@ -260,7 +260,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 3
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 118
@@ -917,7 +917,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1064220303}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 29.78}
+  m_LocalPosition: {x: 0, y: 0, z: 17.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1321,8 +1321,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1586921603}
-  m_LocalRotation: {x: 0.15913463, y: -0.82927585, z: 0.2952121, w: 0.44702083}
-  m_LocalPosition: {x: 3.5859623, y: 4.0687447, z: 13.280358}
+  m_LocalRotation: {x: 0.297776, y: -0.31367686, z: 0.104303166, w: 0.8955765}
+  m_LocalPosition: {x: 3.483017, y: 6.327383, z: 6.0024586}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1918,10 +1918,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f1d28e1221df3e4bad034b497c504d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 15
-  accelerationRate: 1
-  brakeRate: 0.5
-  decelaration: 2
+  maxSpeed: 10
+  accelerationRate: 50
+  brakeRate: 50
+  decelaration: 3
 --- !u!54 &1796471232
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1931,7 +1931,7 @@ Rigidbody:
   m_GameObject: {fileID: 1796471225}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 2
+  m_Drag: 3
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
