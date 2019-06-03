@@ -15,13 +15,14 @@ public class LiftGate : MonoBehaviour {
 
 	[SerializeField] private Stoplight trafficLight;
 
+	// Gate is controlled through this property. Gets read each frame and updates the gate accordingly
 	[SerializeField] private bool open;
 	public bool Open => open;
 
 	public LiftGateState State { get; private set; } = LiftGateState.Idle;
 
 	private void Update() {
-		// TODO this code can be optimized by checking against change rather than updating everything
+		// TODO this code can be optimized by checking against change rather than updating everything. Maybe?
 		if (open) {
 			// Set state to idle if openAngle was reached
 			// TODO fix this dirty fix (stop using range and find an actual solution), original code in comment below
@@ -33,7 +34,7 @@ public class LiftGate : MonoBehaviour {
 				State = LiftGateState.Opening;
 			}
 
-			trafficLight.CurrentState = Stoplight.TraficLightState.Green;
+			trafficLight.State = Stoplight.TraficLightState.Green;
 		}
 		else {
 			// Set state to idle if closeAngle was reached
@@ -46,7 +47,7 @@ public class LiftGate : MonoBehaviour {
 				State = LiftGateState.Closing;
 			}
 
-			trafficLight.CurrentState = Stoplight.TraficLightState.Red;
+			trafficLight.State = Stoplight.TraficLightState.Red;
 		}
 
 		// Move to openAngle if state is opening, move to closeAngle if state is closing, do nothing if idle
@@ -66,6 +67,7 @@ public class LiftGate : MonoBehaviour {
 	}
 
 	private IEnumerator CloseGateWithTimeout(float time) {
+		// Wait till the time it takes to inspect an ai car has passed (debug version counts down in console)
 		if (Debug.isDebugBuild) {
 			for (int i = 0; i < time; i++) {
 				Debug.Log("Gate open... " + (time - i));

@@ -17,13 +17,8 @@ public class AiCar : MonoBehaviour {
 
 	private void OnValidate() {
 		// Do not allow despawnRadius and targetRadius values below zero
-		if (despawnRadius < 0) {
-			despawnRadius = 0;
-		}
-
-		if (targetRadius < 0) {
-			targetRadius = 0;
-		}
+		if (despawnRadius < 0) despawnRadius = 0;
+		if (targetRadius < 0) targetRadius = 0;
 	}
 
 	private void Awake() {
@@ -43,7 +38,7 @@ public class AiCar : MonoBehaviour {
 			inTargetRange = true;
 			target.RegisterCar(car);
 		}
-		
+
 		// Accelerate if the car has not yet reached the target point with an allowance of the stopping distance
 		// Or if the car has passed the target and is merrily on its way to its own destruction
 		if (!inTargetRange) {
@@ -67,14 +62,16 @@ public class AiCar : MonoBehaviour {
 	public void SetInspectionPassed() {
 		passedInspection = true;
 	}
-	
+
 	private void DespawnCheck() {
+		// Destroy this car if it gets too close (defined by despawnRadius) to the despawn point
 		if (DistanceXZ(windowPosition.position, despawnTarget.position) < despawnRadius) {
 			Destroy(gameObject);
 		}
 	}
 
 	private float DistanceXZ(Vector3 a, Vector3 b) {
+		// Calculate distance in XZ plane, discarding vertical distance
 		Vector2 a2 = new Vector2(a.x, a.z);
 		Vector2 b2 = new Vector2(b.x, b.z);
 

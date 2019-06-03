@@ -13,8 +13,9 @@ public class Stoplight : MonoBehaviour {
 	[SerializeField] private Light red;
 	[SerializeField] private Light green;
 
+	// Changing the State property allows control over the traffic light
 	[SerializeField] private TraficLightState state;
-	public TraficLightState CurrentState {
+	public TraficLightState State {
 		set {
 			state = value;
 			switch (value) {
@@ -35,11 +36,12 @@ public class Stoplight : MonoBehaviour {
 	}
 
 	private void Start() {
-		CurrentState = TraficLightState.Off;
+		State = TraficLightState.Off;
 	}
 
 	private void OnValidate() {
-		CurrentState = state;
+		// Allow visual feedback of state during edit mode
+		State = state;
 	}
 
 	private void SetGreen(bool val) {

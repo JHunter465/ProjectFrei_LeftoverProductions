@@ -29,7 +29,7 @@ public class Car : MonoBehaviour {
 	private void Start() {
 		rb = GetComponent<Rigidbody>();
 	}
-	
+
 	// TODO maybe optimize this by clamping the accelerationRate instead of the entire velocity vector.
 	public void Accelerate() {
 		rb.velocity = Vector3.ClampMagnitude(rb.velocity + accelerationRate * Vector3.forward * Time.fixedDeltaTime, maxSpeed);
