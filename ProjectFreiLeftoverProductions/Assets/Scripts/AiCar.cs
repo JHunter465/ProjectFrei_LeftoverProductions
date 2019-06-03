@@ -4,11 +4,14 @@ using Vector3 = UnityEngine.Vector3;
 
 [RequireComponent(typeof(Car))]
 public class AiCar : MonoBehaviour {
-	[SerializeField] private BorderControl target;
-	[SerializeField] private float targetRadius = .4f;
-	[SerializeField] private Transform despawnTarget;
+	[SerializeField] private BorderControl borderControlTarget;
+	[SerializeField] private float targetRadius = 0.4f;
+	[Space(10)] [SerializeField] private Transform despawnTarget;
 	[SerializeField] private float despawnRadius = 0.5f;
-	[SerializeField] private Transform windowPosition;
+	[Space(10)] [SerializeField] private Transform windowPosition;
+	[Space(10)] [SerializeField] private Transform front;
+	[SerializeField] private float distanceToNextCar;
+	[SerializeField] private LayerMask aiLayer;
 
 	private bool inTargetRange;
 	private bool passedInspection;
@@ -34,27 +37,34 @@ public class AiCar : MonoBehaviour {
 
 	private void MoveCar() {
 		// Tell the border control point that this car is now in range (passedInspection flag is to avoid duplicate registration)
-		if (!passedInspection && DistanceXZ(windowPosition.position, target.transform.position) < targetRadius) {
+		if (!passedInspection && DistanceXZ(windowPosition.position, borderControlTarget.transform.position) < targetRadius) {
 			inTargetRange = true;
-			target.RegisterCar(car);
+			borderControlTarget.RegisterCar(car);
 		}
 
-		// Accelerate if the car has not yet reached the target point with an allowance of the stopping distance
-		// Or if the car has passed the target and is merrily on its way to its own destruction
-		if (!inTargetRange) {
-			car.Accelerate();
+		if (Debug.isDebugBuild) Debug.DrawRay(front.transform.position, Vector3.forward, Color.green);
+		if (Physics.Raycast(front.transform.position, Vector3.forward, distanceToNextCar, aiLayer)) {
+			// Allow movement only if no car is blocking the way
+			car.Brake();
 		}
 		else {
-			// Car needs to accelerate after it has passed the inspection
-			if (inTargetRange && passedInspection) {
-				// First wait until the gate is open
-				if (target.LiftGate.Open && target.LiftGate.State == LiftGate.LiftGateState.Idle) {
-					car.Accelerate();
-				}
+			// Accelerate if the car has not yet reached the borderControlTarget point with an allowance of the stopping distance
+			// Or if the car has passed the borderControlTarget and is merrily on its way to its own destruction
+			if (!inTargetRange) {
+				car.Accelerate();
 			}
-			// Brake if the car is in range of the target (implied by if tree) and it needs to stop (inspection not passed)
-			else if (car.Velocity.magnitude > 0) {
-				car.Brake();
+			else {
+				// Car needs to accelerate after it has passed the inspection
+				if (inTargetRange && passedInspection) {
+					// First wait until the gate is open
+					if (borderControlTarget.LiftGate.Open && borderControlTarget.LiftGate.State == LiftGate.LiftGateState.Idle) {
+						car.Accelerate();
+					}
+				}
+				// Brake if the car is in range of the borderControlTarget (implied by if tree) and it needs to stop (inspection not passed)
+				else if (car.Velocity.magnitude > 0) {
+					car.Brake();
+				}
 			}
 		}
 	}
