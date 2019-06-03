@@ -7,10 +7,8 @@ public class AiCar : MonoBehaviour {
 	[SerializeField] private BorderControl target;
 	[SerializeField] private float targetRadius = .4f;
 	[SerializeField] private Transform despawnTarget;
-	[SerializeField] private float despawnRadius = 0.1f;
+	[SerializeField] private float despawnRadius = 0.5f;
 	[SerializeField] private Transform windowPosition;
-
-	[SerializeField] private LiftGate liftGate;
 
 	private bool inTargetRange;
 	private bool passedInspection;
@@ -66,7 +64,7 @@ public class AiCar : MonoBehaviour {
 	
 	private void DespawnCheck() {
 		if (DistanceXZ(windowPosition.position, despawnTarget.position) < despawnRadius) {
-			Destroy(this);
+			Destroy(gameObject);
 		}
 	}
 
