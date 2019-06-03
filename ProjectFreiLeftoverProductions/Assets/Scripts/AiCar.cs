@@ -35,7 +35,7 @@ public class AiCar : MonoBehaviour {
 	}
 
 	private void MoveCar() {
-		if (DistanceXZ(windowPosition.position, target.transform.position) < targetRadius) {
+		if (!passedInspection && DistanceXZ(windowPosition.position, target.transform.position) < targetRadius) {
 			inTargetRange = true;
 			target.RegisterCar(car);
 		}
