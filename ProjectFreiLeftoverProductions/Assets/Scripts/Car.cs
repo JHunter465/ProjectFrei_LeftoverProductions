@@ -6,13 +6,16 @@ using Vector3 = UnityEngine.Vector3;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Car : MonoBehaviour {
-	[SerializeField] private float maxSpeed = 1;
-	[SerializeField] private float accelerationRate = .1f;
-	[SerializeField] private float brakeRate = .1f;
-	[SerializeField] private float decelaration = 2f;
+	[SerializeField] private float maxSpeed = 15;
+	[SerializeField] private float accelerationRate = 1;
+	[SerializeField] private float brakeRate = 3;
+	[SerializeField] private float decelaration = 2;
 
-	// Speed of the car upon scene initialization
-	[SerializeField] private float startSpeed = 0;
+	// This is a player car if there is no AiCar component attached to the gameobject;
+	public bool IsPlayerCar => GetComponent<AiCar>() == null;
+
+	// Return current velocity or zero if rigidbody has not yet been set (before initialization)
+	public Vector3 Velocity => rb != null ? rb.velocity : Vector3.zero;
 
 	// Rigidbody component ref
 	private Rigidbody rb;
@@ -26,15 +29,14 @@ public class Car : MonoBehaviour {
 	private void Start() {
 		rb = GetComponent<Rigidbody>();
 	}
-
 	
 	// TODO maybe optimize this by clamping the accelerationRate instead of the entire velocity vector.
 	public void Accelerate() {
-		rb.velocity += Vector3.ClampMagnitude(accelerationRate * Vector3.forward, maxSpeed);
+		rb.velocity = Vector3.ClampMagnitude(rb.velocity + accelerationRate * Vector3.forward * Time.fixedDeltaTime, maxSpeed);
 	}
 
 	public void Brake() {
 		// TODO Warning this assumes position along other axis than just forward is locked.
-		rb.velocity -= Vector3.ClampMagnitude(brakeRate * Vector3.forward, rb.velocity.magnitude);
+		rb.velocity -= Vector3.ClampMagnitude(brakeRate * Vector3.forward * Time.fixedDeltaTime, rb.velocity.magnitude);
 	}
 }
