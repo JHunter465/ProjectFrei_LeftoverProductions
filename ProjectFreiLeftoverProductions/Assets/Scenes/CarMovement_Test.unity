@@ -357,13 +357,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 300457882}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.28129, y: 4.890141, z: 24.667793}
-  m_LocalScale: {x: 2.5845199, y: 0.15047, z: 0.11897}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.32002512, y: -0.027999878, z: -0.65226805}
+  m_LocalScale: {x: 9.039298, y: 0.15047, z: 0.46023667}
   m_Children:
   - {fileID: 1760838628}
-  m_Father: {fileID: 1910792782}
-  m_RootOrder: 3
+  m_Father: {fileID: 338883570}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &300457884
 MonoBehaviour:
@@ -395,7 +395,7 @@ GameObject:
   - component: {fileID: 338883572}
   - component: {fileID: 338883571}
   m_Layer: 0
-  m_Name: Cube (4)
+  m_Name: Slagboom stand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -411,9 +411,10 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.3727917, y: 4.918141, z: 24.836403}
   m_LocalScale: {x: 0.2859204, y: 1, z: 0.25849745}
-  m_Children: []
+  m_Children:
+  - {fileID: 300457883}
   m_Father: {fileID: 1910792782}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &338883571
 BoxCollider:
@@ -1822,7 +1823,6 @@ Transform:
   - {fileID: 1456543035}
   - {fileID: 287059953}
   - {fileID: 1684137842}
-  - {fileID: 300457883}
   - {fileID: 338883570}
   m_Father: {fileID: 0}
   m_RootOrder: 9
