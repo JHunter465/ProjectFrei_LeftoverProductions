@@ -36,12 +36,17 @@ public class AiCar : MonoBehaviour {
 	}
 
 	private void MoveCar() {
-		// Tell the border control point that this car is now in range (passedInspection flag is to avoid duplicate registration)
-		if (!passedInspection && DistanceXZ(windowPosition.position, borderControlTarget.transform.position) < targetRadius) {
+		// Set flag that this car is in range of the border control target point
+		if (DistanceXZ(windowPosition.position, borderControlTarget.transform.position) < targetRadius) {
 			inTargetRange = true;
+		}
+		
+		// Tell the border control point that this car is now in range (passedInspection flag is to avoid duplicate registration)
+		if (!passedInspection && !borderControlTarget.CarRegistered(car) && inTargetRange) {
 			borderControlTarget.RegisterCar(car);
 		}
 
+		// Draw a simple debug ray to visualize distance that is being kept
 		if (Debug.isDebugBuild) Debug.DrawRay(front.transform.position, Vector3.forward, Color.green);
 		if (Physics.Raycast(front.transform.position, Vector3.forward, distanceToNextCar, aiLayer)) {
 			// Allow movement only if no car is blocking the way

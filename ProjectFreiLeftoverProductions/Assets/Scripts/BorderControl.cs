@@ -15,6 +15,7 @@ public class BorderControl : MonoBehaviour {
 	public LiftGate LiftGate => liftGate;
 
 	public void RegisterCar(Car car) {
+		Debug.Log("Registering car " + car.gameObject.name);
 		// Add car to the queue
 		queue.Enqueue(car);
 
@@ -78,5 +79,9 @@ public class BorderControl : MonoBehaviour {
 		// TODO This almost creates a loop. Almost. It's freaky
 		// TODO this code messes up (makes it loop like I thought but with an empty currentCar), will probably not work for multiple cars but might
 //		UpdateCurrentCar();
+	}
+
+	public bool CarRegistered(Car car) {
+		return currentCar == car || queue.Contains(car);
 	}
 }
