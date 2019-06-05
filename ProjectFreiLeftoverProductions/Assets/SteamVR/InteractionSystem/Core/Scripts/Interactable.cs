@@ -238,8 +238,10 @@ namespace Valve.VR.InteractionSystem
 
             if (highlightOnHover == true)
             {
-                CreateHighlightRenderers();
-                UpdateHighlightRenderers();
+
+                SetHighlight(true);
+                //CreateHighlightRenderers();
+                //UpdateHighlightRenderers();
             }
         }
 
@@ -253,8 +255,14 @@ namespace Valve.VR.InteractionSystem
             isHovering = false;
             Debug.Log("Hand has stopped hovering over this object");
 
-            if (highlightOnHover && highlightHolder != null)
-                Destroy(highlightHolder);
+            //if (highlightOnHover && highlightHolder != null)
+            //    Destroy(highlightHolder);
+            if (highlightOnHover)
+            {
+
+                SetHighlight(false);
+            }
+
         }
 
         protected virtual void Update()
@@ -263,8 +271,9 @@ namespace Valve.VR.InteractionSystem
             {
                 UpdateHighlightRenderers();
 
-                if (isHovering == false && highlightHolder != null)
-                    Destroy(highlightHolder);
+                //if (isHovering == false && highlightHolder != null)
+                if (isHovering == false)
+                    SetHighlight(false);
             }
         }
         
@@ -344,6 +353,16 @@ namespace Valve.VR.InteractionSystem
 
             if (highlightHolder != null)
                 Destroy(highlightHolder);
+        }
+
+        private void SetHighlight(bool highlighted)
+        {
+            Renderer rend = gameObject.GetComponentInChildren<Renderer>();
+            MaterialPropertyBlock matPropBlock = new MaterialPropertyBlock();
+
+            rend.GetPropertyBlock(matPropBlock);
+            matPropBlock.SetFloat("_BoolIsObjectHighlighted", highlighted ? 1 : 0);
+            rend.SetPropertyBlock(matPropBlock);
         }
     }
 }
