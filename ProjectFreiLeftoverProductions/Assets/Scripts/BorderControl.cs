@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 using UnityEngine;
 using UnityEngine.Experimental.PlayerLoop;
 
-public class BorderControl : MonoBehaviour {
+public class BorderControl : Target {
 	private readonly Queue<Car> queue = new Queue<Car>();
 	private Car currentCar;
 

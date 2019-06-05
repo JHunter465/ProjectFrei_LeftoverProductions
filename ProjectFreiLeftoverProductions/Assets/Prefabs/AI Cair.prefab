@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 3596042048874317613}
   - component: {fileID: 3596042048874317612}
   m_Layer: 9
-  m_Name: Ai4
+  m_Name: AI Cair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
