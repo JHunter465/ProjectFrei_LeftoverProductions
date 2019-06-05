@@ -1,0 +1,16 @@
+{
+  "source": "Unity",
+  "applications": [
+    {
+      "app_key": "application.generated.unity.projectfreileftoverproductions.exe",
+      "launch_type": "url",
+      "url": "steam://launch/",
+      "action_manifest_path": "C:\\Users\\ADDER\\Dropbox (Holland Animatie)\\_HKU\\Project Vrij\\GIT_New\\ProjectFreiLeftoverProductions\\actions.json",
+      "strings": {
+        "en_us": {
+          "name": "ProjectFreiLeftoverProductions [Testing]"
+        }
+      }
+    }
+  ]
+}

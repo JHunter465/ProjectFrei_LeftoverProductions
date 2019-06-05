@@ -233,7 +233,7 @@ namespace Valve.VR.InteractionSystem
         {
             wasHovering = isHovering;
             isHovering = true;
-
+            Debug.Log("hand is hovering over this object");
             hoveringHand = hand;
 
             if (highlightOnHover == true)
@@ -251,6 +251,7 @@ namespace Valve.VR.InteractionSystem
         {
             wasHovering = isHovering;
             isHovering = false;
+            Debug.Log("Hand has stopped hovering over this object");
 
             if (highlightOnHover && highlightHolder != null)
                 Destroy(highlightHolder);
