@@ -13,11 +13,15 @@ public class CarControls : MonoBehaviour {
 
 	private void FixedUpdate() {
 		// TODO replace with vr controller trigger as scaling value
-		if (Input.GetKey("w")) {
+		if (Input.GetKey(KeyCode.Space)) {
 			car.Accelerate();
 		}
-		else if (Input.GetKey("s")) {
-			car.Brake();
-		}
-	}
+        else if (Input.GetKey(KeyCode.LeftControl))
+        {
+            if (!car.gameObject.GetComponent<Rigidbody>().isKinematic)
+            {
+                car.Brake();
+            }
+        }
+    }
 }

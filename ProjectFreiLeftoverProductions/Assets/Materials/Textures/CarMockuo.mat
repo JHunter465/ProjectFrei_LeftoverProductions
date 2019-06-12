@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: CarMockuo
+  m_Shader: {fileID: -6465566751694194690, guid: 496d8cca43a5b7d4f8067842625245f4,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_80C29098:
+        m_Texture: {fileID: 2800000, guid: fb73de8867f6cb0439a769c7d24d1e9c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_BAA9620F:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_D8D5982F:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Boolean_9B75EE51: 1
+    - Boolean_9DFD0735: 0
+    - Boolean_AAEBF5E4: 0
+    - Vector1_1AFDEF2A: 0.006
+    - Vector1_239B7CDF: 0.07
+    - Vector1_31FD0D92: 0.35
+    - Vector1_54D38C7F: 533.3
+    - Vector1_6C6FAC47: 0.011
+    - Vector1_7273E34F: 0.04
+    - Vector1_8B4985C6: 0
+    - Vector1_93B38E0F: 0.3
+    - Vector1_B761FF1D: 0
+    - Vector1_DC431E2A: 0.9
+    - Vector1_E89D9EB0: 0.21
+    - Vector1_FD8692DA: 300
+    - _BoolIsObjectHighlighted: 0
+    m_Colors:
+    - Color_2DEBC3AD: {r: 1, g: 1, b: 1, a: 0}
+    - Color_30F44D86: {r: 0, g: 4, b: 1.7719507, a: 0}
+    - Color_508734BF: {r: 0.4716981, g: 0, b: 0, a: 0}
+    - Color_8FCB45ED: {r: 1, g: 1, b: 1, a: 0}
+    - Color_99C80BF3: {r: 0.6603774, g: 0.14640442, b: 0.14640442, a: 0}
+    - Color_C1B23788: {r: 1, g: 1, b: 1, a: 0}
