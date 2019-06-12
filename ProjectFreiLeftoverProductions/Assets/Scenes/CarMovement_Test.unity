@@ -98,7 +98,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 112000000, guid: 42ae481011ecb8542bfefba900192e5d,
     type: 2}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -211,6 +211,49 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1078337648}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &179222542
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 179222544}
+  - component: {fileID: 179222543}
+  m_Layer: 0
+  m_Name: eyes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &179222543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179222542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3069d9af3b8e6e469b0104b966ff117, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &179222544
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179222542}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.975}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &224011746
 GameObject:
@@ -358,12 +401,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 300457882}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.32002512, y: -0.027999878, z: -0.65226805}
-  m_LocalScale: {x: 9.039298, y: 0.15047, z: 0.46023667}
+  m_LocalPosition: {x: -0.28129, y: 4.890141, z: 24.667793}
+  m_LocalScale: {x: 2.5845199, y: 0.15047, z: 0.11897001}
   m_Children:
   - {fileID: 1760838628}
-  m_Father: {fileID: 338883570}
-  m_RootOrder: 0
+  m_Father: {fileID: 1910792782}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &300457884
 MonoBehaviour:
@@ -411,10 +454,9 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.3727917, y: 4.918141, z: 24.836403}
   m_LocalScale: {x: 0.2859204, y: 1, z: 0.25849745}
-  m_Children:
-  - {fileID: 300457883}
+  m_Children: []
   m_Father: {fileID: 1910792782}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &338883571
 BoxCollider:
@@ -818,7 +860,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 811722684}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.81, z: 11.06}
+  m_LocalPosition: {x: 0, y: 2.081, z: 11.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -848,7 +890,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1064220304}
-  - component: {fileID: 1064220305}
   m_Layer: 0
   m_Name: DESPAWN TARGET
   m_TagString: Untagged
@@ -870,18 +911,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1064220305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1064220303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f40da46533682dc4481bb9f785fb916b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1078337646
 GameObject:
   m_ObjectHideFlags: 0
@@ -1254,7 +1283,9 @@ MonoBehaviour:
   m_ShowCustomSorter: 0
   breakBeforeColorGrading: 0
   m_BeforeTransparentBundles: []
-  m_BeforeStackBundles: []
+  m_BeforeStackBundles:
+  - assemblyQualifiedName: PostProcessOutline, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   m_AfterStackBundles: []
 --- !u!1001 &1625261906
 PrefabInstance:
@@ -1915,6 +1946,7 @@ Transform:
   - {fileID: 1456543035}
   - {fileID: 287059953}
   - {fileID: 1684137842}
+  - {fileID: 300457883}
   - {fileID: 338883570}
   m_Father: {fileID: 0}
   m_RootOrder: 10
