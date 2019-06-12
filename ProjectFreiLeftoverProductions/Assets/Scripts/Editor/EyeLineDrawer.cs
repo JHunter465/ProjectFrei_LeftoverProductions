@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 
 [CustomEditor(typeof(GuardEyes))]
-public class EyeLineDrawer : Editor {
+public class EyeLineDrawer : UnityEditor.Editor {
 //	private void OnSceneGUI() {
 //		GuardEyes eyes = target as GuardEyes;
 //		if (!eyes) return;

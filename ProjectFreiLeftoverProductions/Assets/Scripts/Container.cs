@@ -11,9 +11,7 @@ public class Container : MonoBehaviour {
 	}
 
 	public void RegisterItem(InteractableItem item) {
-		if (items.Add(item)) {
-			
-		}
+		
 	}
 
 	public void DeregisterItem(InteractableItem item) {
