@@ -3,34 +3,38 @@ using UnityEngine;
 
 public class BorderGuard : MonoBehaviour {
 	[SerializeField] private GuardEyes eyePos;
-//	[SerializeField] private ContainerWatcher watcher;
 
 	[SerializeField] private LayerMask containerLayer;
 
-	[Space(10)]
-	[SerializeField, Range(0, 100)]
-	private float suspicionLevel;
+//	[Space(10)]
+//	[SerializeField, Range(0, 100)]
+//	private float suspicionLevel;
 
-	private LevelManager lvlMgr;
+	private ItemWatcher watcher;
 
-	public float SuspicionLevel => suspicionLevel;
+//	public float SuspicionLevel => suspicionLevel;
 
-	private void Awake() {
-		lvlMgr = GameObject.FindGameObjectWithTag(LevelManager._lvlMgrTag).GetComponent<LevelManager>();
+	private void Start() {
+		watcher = GameObject.FindGameObjectWithTag(ItemWatcher._itemWatcherTag).GetComponent<ItemWatcher>();
 	}
 
-	private void RaiseSuspicionLevel(float amt) {
-		suspicionLevel += amt;
-	}
+//	private void RaiseSuspicionLevel(float amt) {
+//		suspicionLevel += amt;
+//	}
 
 	private void Update() {
-		foreach (InteractableItem i in lvlMgr.items.Where(i => i.HasMoved())) {
+		foreach (InteractableItem i in watcher.items) {
+			if (i.InContainer && !i.Container.Open) continue;
+
 			// Check if guard can see this item
+//			Debug.DrawLine(eyePos.transform.position, i.transform.position, Color.cyan);
 			Physics.Linecast(eyePos.transform.position, i.transform.position, out RaycastHit info, ~containerLayer);
-			Debug.Log("hit: " + info.collider.name);
+			if (info.collider.GetComponent<InteractableItem>()) {
+				Debug.Log("Item " + i.name + " is visible");
+			}
 		}
-		
+
 		// Check if suspicion level is too high
-		
+
 	}
 }
