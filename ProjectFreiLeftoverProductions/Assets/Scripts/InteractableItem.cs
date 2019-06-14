@@ -3,7 +3,7 @@ using UnityEngine;
 
 [DisallowMultipleComponent]
 public class InteractableItem : MonoBehaviour {
-	[SerializeField] private float moveThreshold = 0.0f;
+	[SerializeField] private float moveThreshold = 0.1f;
 	
 	private Vector3 startPos;
 	private ItemWatcher watcher;
