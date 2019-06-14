@@ -23,14 +23,19 @@ public class BorderGuard : MonoBehaviour {
 //	}
 
 	private void Update() {
-		foreach (InteractableItem i in watcher.items) {
-			if (i.InContainer && !i.Container.Open) continue;
+		foreach (InteractableItem item in watcher.Items) {
+			if (item.InContainer && !item.Container.Open) {
+				watcher.SetVisible(item, false);
+				continue;
+			}
 
 			// Check if guard can see this item
-//			Debug.DrawLine(eyePos.transform.position, i.transform.position, Color.cyan);
-			Physics.Linecast(eyePos.transform.position, i.transform.position, out RaycastHit info, ~containerLayer);
+			Physics.Linecast(eyePos.transform.position, item.transform.position, out RaycastHit info, ~containerLayer);
 			if (info.collider.GetComponent<InteractableItem>()) {
-				Debug.Log("Item " + i.name + " is visible");
+				watcher.SetVisible(item, true);
+			}
+			else {
+				watcher.SetVisible(item, false);
 			}
 		}
 
