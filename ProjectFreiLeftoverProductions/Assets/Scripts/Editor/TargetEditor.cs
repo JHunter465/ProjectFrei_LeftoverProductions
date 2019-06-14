@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace editor {
 	[CustomEditor(typeof(BorderControl))]
-	public class TargetEditor : Editor {
+	public class TargetEditor : UnityEditor.Editor {
 		private void OnSceneGUI() {
 			Target t = target as Target;
 
