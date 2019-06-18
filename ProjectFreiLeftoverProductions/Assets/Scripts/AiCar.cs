@@ -37,9 +37,7 @@ public class AiCar : MonoBehaviour {
 
 	private void MoveCar() {
 		// Set flag that this car is in range of the border control target point
-		if (DistanceXZ(windowPosition.position, borderControlTarget.transform.position) < targetRadius) {
-			inTargetRange = true;
-		}
+		inTargetRange = DistanceXZ(windowPosition.position, borderControlTarget.transform.position) < targetRadius;
 		
 		// Tell the border control point that this car is now in range (passedInspection flag is to avoid duplicate registration)
 		if (!passedInspection && !borderControlTarget.CarRegistered(car) && inTargetRange) {

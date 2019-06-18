@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
 using UnityEngine;
-using UnityEngine.Experimental.PlayerLoop;
 
 public class BorderControl : Target {
 	private readonly Queue<Car> queue = new Queue<Car>();
@@ -76,9 +74,6 @@ public class BorderControl : Target {
 
 		// Remove car
 		currentCar = null;
-		// TODO This almost creates a loop. Almost. It's freaky
-		// TODO this code messes up (makes it loop like I thought but with an empty currentCar), will probably not work for multiple cars but might
-//		UpdateCurrentCar();
 	}
 
 	public bool CarRegistered(Car car) {

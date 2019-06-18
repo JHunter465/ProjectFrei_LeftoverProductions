@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LiftGate : MonoBehaviour {
@@ -21,13 +20,19 @@ public class LiftGate : MonoBehaviour {
 
 	public LiftGateState State { get; private set; } = LiftGateState.Idle;
 
+	private void Start() {
+		// Normalize angles
+		if (openAngle < 0) openAngle = (openAngle % 360 + 360);
+		if (closeAngle < 0) closeAngle = (closeAngle % 360 + 360);
+	}
+
 	private void Update() {
 		// TODO this code can be optimized by checking against change rather than updating everything. Maybe?
 		if (open) {
 			// Set state to idle if openAngle was reached
 			// TODO fix this dirty fix (stop using range and find an actual solution), original code in comment below
 //			if (transform.localRotation.eulerAngles.z >= openAngle) {
-			if (Mathf.Abs(transform.localRotation.eulerAngles.z - openAngle) < .1f) {
+			if (Mathf.Abs(transform.localRotation.eulerAngles.z - openAngle) < 1f) {
 				State = LiftGateState.Idle;
 			}
 			else {
