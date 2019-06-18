@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   k_AssetVersion: 4
   m_RendererType: 0
-  m_RendererData: {fileID: 11400000, guid: 01de33e3d9c44904da2a27cc766e17c2, type: 2}
+  m_RendererData: {fileID: 11400000, guid: 3ea5308b20f81c04cb3999bfc5eea063, type: 2}
   m_RequireDepthTexture: 0
   m_RequireOpaqueTexture: 0
   m_OpaqueDownsampling: 1
   m_SupportsHDR: 1
-  m_MSAA: 8
-  m_RenderScale: 4
+  m_MSAA: 4
+  m_RenderScale: 1
   m_MainLightRenderingMode: 1
   m_MainLightShadowsSupported: 1
   m_MainLightShadowmapResolution: 2048
