@@ -12,7 +12,7 @@ public class PlayerCar : MonoBehaviour {
 
 	private Car car;
 
-//	public bool IsWindowDown => windowMapping.value < windowDownValue; TODO temp
+//	public bool IsWindowDown => windowMapping.value < windowDownValue; TODO temp USE THIS CODE IN TESTSCENE ONLY
 	public bool IsWindowDown => true;
 
 	private void Awake() {

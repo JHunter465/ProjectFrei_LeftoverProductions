@@ -7,11 +7,13 @@ public class BorderGuard : MonoBehaviour {
 	[SerializeField] private GuardEyes eyePos;
 	[SerializeField] private LayerMask containerLayer;
 
-	[Space(10), SerializeField, Range(0, 100)] private float suspicionLevel;
+	[Space(10)]
+	[SerializeField, Range(0, 100)]
+	private float suspicionLevel;
+
 	public float SuspicionLevel => suspicionLevel;
 
-	public float DisplaySuspicion { get; private set; }
-
+	private float targetSuspicion;
 	[SerializeField] private float meterSpeed = 1;
 
 	private bool active;
@@ -26,32 +28,43 @@ public class BorderGuard : MonoBehaviour {
 		meterSpeed = meterSpeed <= 0.01 ? 1 : meterSpeed;
 	}
 
-	public void AddSuspicion(float amt) {
-		suspicionLevel = Mathf.Clamp(suspicionLevel + amt, 0, 100);
-		ShowSuspicionLevel(suspicionLevel);
-	}
-
-	private void ShowSuspicionLevel(float newValue) {
+	private void SetSuspicionLevel(float newValue) {
 		StopAllCoroutines();
 		StartCoroutine(LerpToSuspicionLevel(newValue));
 	}
 
+	public void AddSuspicion(float amt) {
+		targetSuspicion += amt;
+		SetSuspicionLevel(targetSuspicion);
+	}
+
 	private IEnumerator LerpToSuspicionLevel(float target) {
-		while (Mathf.Abs(target - DisplaySuspicion) > 0.1) {
-			DisplaySuspicion = Mathf.Lerp(DisplaySuspicion, target, Mathf.Sqrt(Time.deltaTime * meterSpeed));
+		target = Mathf.Clamp(target, 0, 100);
+
+		while (Mathf.Abs(target - suspicionLevel) > 0.1) {
+			suspicionLevel = Mathf.Lerp(suspicionLevel, target, Mathf.Sqrt(Time.deltaTime * meterSpeed));
 			yield return null;
 		}
 
-		DisplaySuspicion = target;
+		suspicionLevel = target;
 	}
 
 	private void Update() {
+		CheckSuspicion();
+		
 		if (active) {
 			UpdateItemVisibility();
 
 			foreach (InteractableItem item in watcher.Items.Where(item => watcher.IsVisible(item))) {
 				// TODO Do stuff with the visible items here
 			}
+		}
+	}
+
+	private void CheckSuspicion() {
+		if (SuspicionLevel > 99) {
+			LevelManager mgr = GameObject.FindWithTag(LevelManager._lvlMgrTag).GetComponent<LevelManager>();
+			mgr.GameOver();
 		}
 	}
 

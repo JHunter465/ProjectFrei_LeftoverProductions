@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BorderControl : Target {
 	private readonly Queue<Car> queue = new Queue<Car>();
-	protected Car currentCar;
+	public Car currentCar;
 
 	[SerializeField] private float aiInspectionTime = 5;
 	[SerializeField] private LiftGate liftGate;

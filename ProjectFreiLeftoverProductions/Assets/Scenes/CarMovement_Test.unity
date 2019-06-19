@@ -825,7 +825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 188bb5038c00f4847ab7a4a66d224576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  borderControlTarget: {fileID: 811722686}
+  borderControlTarget: {fileID: 0}
   targetRadius: 0.4
   despawnTarget: {fileID: 1064220304}
   despawnRadius: 0.5
@@ -1089,6 +1089,49 @@ Transform:
   m_Father: {fileID: 361304182}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &729104255
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 729104256}
+  - component: {fileID: 729104257}
+  m_Layer: 0
+  m_Name: LEVEL MANAGER
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &729104256
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729104255}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.4045496, y: -4.3382134, z: 17.800568}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &729104257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729104255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f4186ccf74bbab4c97642f1889fee38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &811722684
 GameObject:
   m_ObjectHideFlags: 0
@@ -1098,6 +1141,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 811722685}
+  - component: {fileID: 811722687}
   - component: {fileID: 811722686}
   m_Layer: 0
   m_Name: BORDER CONTROL CONTROLLER
@@ -1130,17 +1174,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 811722684}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 156bc6de874247aba47692b4c3b0c6fe, type: 3}
+  m_Script: {fileID: 11500000, guid: 30e7d7c976d85f8489f0d5b77cc119c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aiInspectionTime: 2
-  liftGate: {fileID: 300457884}
-  liftGateOpenTime: 3
   guard: {fileID: 134918865}
   passport: {fileID: 1525275673}
   passportContainer: {fileID: 2021535298}
-  passportWaitSuspicion: 0
-  passportWaitRefreshTime: 0
+  passportWaitSuspicion: 50
+  passportWaitRefreshTime: 1
+--- !u!114 &811722687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 811722684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 156bc6de874247aba47692b4c3b0c6fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentCar: {fileID: 0}
+  aiInspectionTime: 2
+  liftGate: {fileID: 300457884}
+  liftGateOpenTime: 3
 --- !u!1 &826708092
 GameObject:
   m_ObjectHideFlags: 0
@@ -2054,7 +2111,7 @@ PrefabInstance:
         type: 3}
       propertyPath: borderControlTarget
       value: 
-      objectReference: {fileID: 811722686}
+      objectReference: {fileID: 811722687}
     - target: {fileID: 3596042048874317612, guid: 5c252d721bbc2b9448588c48c5fe74dd,
         type: 3}
       propertyPath: despawnTarget
@@ -2696,7 +2753,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   windowMapping: {fileID: 0}
   windowDownValue: 0.1
-  borderControlTarget: {fileID: 811722686}
+  borderControlTarget: {fileID: 811722687}
   targetRadius: 0.4
   windowPosition: {fileID: 2133315165}
 --- !u!1 &1879134423
@@ -2940,7 +2997,7 @@ PrefabInstance:
         type: 3}
       propertyPath: borderControlTarget
       value: 
-      objectReference: {fileID: 811722686}
+      objectReference: {fileID: 0}
     - target: {fileID: 3596042048874317612, guid: 5c252d721bbc2b9448588c48c5fe74dd,
         type: 3}
       propertyPath: despawnTarget

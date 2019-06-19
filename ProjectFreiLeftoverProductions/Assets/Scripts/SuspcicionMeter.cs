@@ -11,6 +11,6 @@ public class SuspcicionMeter : MonoBehaviour {
 	}
 
 	private void Update() {
-		slider.value = guard.DisplaySuspicion / 100;
+		slider.value = guard.SuspicionLevel / 100;
 	}
 }
