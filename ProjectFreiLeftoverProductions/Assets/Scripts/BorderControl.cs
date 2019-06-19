@@ -9,6 +9,7 @@ public class BorderControl : Target {
 	[SerializeField] private float aiInspectionTime = 5;
 	[SerializeField] private LiftGate liftGate;
 	[SerializeField] private float liftGateOpenTime = 3;
+	[SerializeField] private float liftGateOpenTimePlayer = 10;
 
 	public LiftGate LiftGate => liftGate;
 
@@ -47,7 +48,7 @@ public class BorderControl : Target {
 	protected virtual void StartPlayerInspection() {
 		throw new System.NotImplementedException();
 	}
-	
+
 	private void StartAiInspection() {
 		StartCoroutine(WaitForInspection());
 	}
@@ -72,12 +73,19 @@ public class BorderControl : Target {
 
 		// Set inspectionPassed flag on the AI car so it knows to move along
 		currentCar.GetComponent<AiCar>().SetInspectionPassed();
-		ReleaseCar();
+		ReleaseCar(false);
 	}
 
-	private void ReleaseCar() {
-		// Open lift gate
-		liftGate.OpenGate(liftGateOpenTime);
+	protected void ReleaseCar(bool waitUntilPlayerPassed) {
+		if (waitUntilPlayerPassed) {
+			// Open lift gate waiting until car passed
+//			liftGate.OpenGate(() => currentCar.GetComponent<PlayerCar>().ExitedBorderControl); TODO fix predicate opening
+			liftGate.OpenGate(liftGateOpenTimePlayer);
+		}
+		else {
+			// Open lift gate timed
+			liftGate.OpenGate(liftGateOpenTime);
+		}
 
 		// Remove car
 		currentCar = null;

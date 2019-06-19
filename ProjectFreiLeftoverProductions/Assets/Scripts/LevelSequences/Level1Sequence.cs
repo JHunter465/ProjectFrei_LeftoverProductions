@@ -28,10 +28,13 @@ namespace LevelSequences {
 		}
 
 		private IEnumerator WaitForPassport() {
-			while (passport.Container != passportContainer) {
+//			while (passport.Container != passportContainer) {
+			for (int i = 0; i < 2; i++) {
 				yield return new WaitForSeconds(passportWaitRefreshTime);
 				guard.AddSuspicion(passportWaitSuspicion);
 			}
+			
+			pbc.ReleasePlayerCar();
 		}
 	}
 }
