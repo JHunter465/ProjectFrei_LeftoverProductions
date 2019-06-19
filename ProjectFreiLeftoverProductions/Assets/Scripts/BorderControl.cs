@@ -44,7 +44,7 @@ public class BorderControl : Target {
 		}
 	}
 
-	public virtual void StartPlayerInspection() {
+	protected virtual void StartPlayerInspection() {
 		throw new System.NotImplementedException();
 	}
 	

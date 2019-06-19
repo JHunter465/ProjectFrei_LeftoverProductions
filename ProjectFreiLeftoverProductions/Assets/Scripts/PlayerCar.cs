@@ -12,7 +12,7 @@ public class PlayerCar : MonoBehaviour {
 
 	private Car car;
 
-//	public bool IsWindowDown => windowMapping.value < windowDownValue; TODO temp USE THIS CODE IN TESTSCENE ONLY
+//	public bool IsWindowDown => windowMapping.value < windowDownValue; TODO temp USE THIS CODE FOR TESTING ONLY
 	public bool IsWindowDown => true;
 
 	private void Awake() {
@@ -20,7 +20,10 @@ public class PlayerCar : MonoBehaviour {
 	}
 
 	private void Update() {
+		// Check if player is in target range in the XZ plane
 		bool inTargetRange = HelperMethods.DistanceXZ(windowPosition.position, borderControlTarget.transform.position) < targetRadius;
+		
+		// Register car if it wasn't already registered and the car is in range
 		if (!borderControlTarget.CarRegistered(car) && inTargetRange) {
 			// TODO disable movement
 			borderControlTarget.RegisterCar(car);

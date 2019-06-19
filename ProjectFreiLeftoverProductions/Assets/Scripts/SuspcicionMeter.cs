@@ -7,10 +7,12 @@ public class SuspcicionMeter : MonoBehaviour {
 	private Slider slider;
 
 	private void Awake() {
+		// Initialize slider reference
 		slider = GetComponent<Slider>();
 	}
 
 	private void Update() {
+		// Update visual to current suspicion level
 		slider.value = guard.SuspicionLevel / 100;
 	}
 }

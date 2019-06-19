@@ -9,6 +9,7 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	public void GameOver() {
+		// Load game over scene
 		SceneManager.LoadScene("Death");
 	}
 }
