@@ -26,6 +26,7 @@ public class BorderGuard : MonoBehaviour {
 	}
 
 	private void Update() {
+		// TODO only do this if window down (interaction started)
 		UpdateItemVisibility();
 
 		foreach (InteractableItem item in watcher.Items.Where(item => watcher.IsVisible(item))) {
