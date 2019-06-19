@@ -10,7 +10,7 @@ public class PlayerCar : MonoBehaviour {
 	[SerializeField] private float targetRadius = 0.4f;
 	[SerializeField] private Transform windowPosition;
 	
-	[SerializeField] private Transform exitTarget;
+//	[SerializeField] private Transform exitTarget;
 
 	private Car car;
 
@@ -23,8 +23,8 @@ public class PlayerCar : MonoBehaviour {
 	}
 
 	private void Update() {
-		if (!ExitedBorderControl) {
-			ExitedBorderControl = HelperMethods.DistanceXZ(windowPosition.position, exitTarget.transform.position) < targetRadius;
+//		if (!ExitedBorderControl) {
+//			ExitedBorderControl = HelperMethods.DistanceXZ(windowPosition.position, exitTarget.transform.position) < targetRadius;
 			
 			// Check if player is in target range in the XZ plane
 			bool inTargetRange = HelperMethods.DistanceXZ(windowPosition.position, borderControlTarget.transform.position) < targetRadius;
@@ -34,6 +34,6 @@ public class PlayerCar : MonoBehaviour {
 				// TODO disable movement
 				borderControlTarget.RegisterCar(car);
 			}
-		}
+//		}
 	}
 }
