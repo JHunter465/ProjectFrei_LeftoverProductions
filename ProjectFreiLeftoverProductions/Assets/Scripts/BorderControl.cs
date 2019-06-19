@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BorderControl : Target {
 	private readonly Queue<Car> queue = new Queue<Car>();
-	private Car currentCar;
+	protected Car currentCar;
 
 	[SerializeField] private float aiInspectionTime = 5;
 	[SerializeField] private LiftGate liftGate;
@@ -34,13 +34,20 @@ public class BorderControl : Target {
 
 	private void StartInspection() {
 		if (currentCar.IsPlayerCar) {
-			// TODO Start player inspection
+			StartPlayerInspection();
+		}
+		else if (currentCar.IsAiCar) {
+			StartAiInspection();
 		}
 		else {
-			StartAiInspection();
+			Debug.LogError("Missing controller component (AiCar or PlayerCar)");
 		}
 	}
 
+	public virtual void StartPlayerInspection() {
+		throw new System.NotImplementedException();
+	}
+	
 	private void StartAiInspection() {
 		StartCoroutine(WaitForInspection());
 	}

@@ -10,8 +10,9 @@ public class Car : MonoBehaviour {
 	[SerializeField] private float decelaration = 3;
 
 	// This is a player car if there is no AiCar component attached to the gameobject;
-	public bool IsPlayerCar => GetComponent<AiCar>() == null;
-
+	public bool IsPlayerCar => GetComponent<PlayerCar>() != null  && !IsAiCar;
+	public bool IsAiCar => GetComponent<AiCar>() != null && !IsPlayerCar;
+	
 	// Return current velocity or zero if rigidbody has not yet been set (before initialization)
 	public Vector3 Velocity => rb != null ? rb.velocity : Vector3.zero;
 

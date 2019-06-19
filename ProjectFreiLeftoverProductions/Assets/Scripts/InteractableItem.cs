@@ -37,7 +37,7 @@ public class InteractableItem : MonoBehaviour {
 		}
 	}
 
-	private void MoveToStartPos() {
+	public void MoveToStartPos() {
 		try {
 			transform.position = startPos;
 		}

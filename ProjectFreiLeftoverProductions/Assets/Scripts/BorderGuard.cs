@@ -1,36 +1,57 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 public class BorderGuard : MonoBehaviour {
 	[SerializeField] private GuardEyes eyePos;
 	[SerializeField] private LayerMask containerLayer;
 
-	[Space(10)]
-	[SerializeField, Range(0, 100)]
-	private float suspicionLevel;
-
+	[Space(10), SerializeField, Range(0, 100)] private float suspicionLevel;
 	public float SuspicionLevel => suspicionLevel;
 
+	public float DisplaySuspicion { get; private set; }
+
+	[SerializeField] private float meterSpeed = 1;
+
+	private bool active;
 	private ItemWatcher watcher;
+
+	private void OnValidate() {
+		meterSpeed = meterSpeed <= 0.01 ? 1 : meterSpeed;
+	}
 
 	private void Start() {
 		watcher = GameObject.FindGameObjectWithTag(ItemWatcher._itemWatcherTag).GetComponent<ItemWatcher>();
+		meterSpeed = meterSpeed <= 0.01 ? 1 : meterSpeed;
 	}
 
-	private void SetSuspicionLevel(float newValue) {
-		suspicionLevel = Mathf.Clamp(newValue, 0, 100);
+	public void AddSuspicion(float amt) {
+		suspicionLevel = Mathf.Clamp(suspicionLevel + amt, 0, 100);
+		ShowSuspicionLevel(suspicionLevel);
 	}
 
-	public void RaiseSuspicionLevel(float amt) {
-		SetSuspicionLevel(suspicionLevel + amt);
+	private void ShowSuspicionLevel(float newValue) {
+		StopAllCoroutines();
+		StartCoroutine(LerpToSuspicionLevel(newValue));
+	}
+
+	private IEnumerator LerpToSuspicionLevel(float target) {
+		while (Mathf.Abs(target - DisplaySuspicion) > 0.1) {
+			DisplaySuspicion = Mathf.Lerp(DisplaySuspicion, target, Mathf.Sqrt(Time.deltaTime * meterSpeed));
+			yield return null;
+		}
+
+		DisplaySuspicion = target;
 	}
 
 	private void Update() {
-		// TODO only do this if window down (interaction started)
-		UpdateItemVisibility();
+		if (active) {
+			UpdateItemVisibility();
 
-		foreach (InteractableItem item in watcher.Items.Where(item => watcher.IsVisible(item))) {
-			// TODO Do stuff with the visible items here
+			foreach (InteractableItem item in watcher.Items.Where(item => watcher.IsVisible(item))) {
+				// TODO Do stuff with the visible items here
+			}
 		}
 	}
 
@@ -49,5 +70,8 @@ public class BorderGuard : MonoBehaviour {
 			watcher.SetVisible(item, info.collider.GetComponent<InteractableItem>() != null);
 		}
 	}
-	
+
+	public void Activate() {
+		active = true;
+	}
 }

@@ -30,6 +30,8 @@ public class Container : MonoBehaviour {
 	public BooleanCheck CheckMode => bc;
 
 	private void Update() {
+		if (!lm) return;
+		
 		bool comparison = false;
 
 		if (bc == BooleanCheck.Equal) {
