@@ -37,7 +37,7 @@ public class AiCar : MonoBehaviour {
 
 	private void MoveCar() {
 		// Set flag that this car is in range of the border control target point
-		inTargetRange = DistanceXZ(windowPosition.position, borderControlTarget.transform.position) < targetRadius;
+		inTargetRange = HelperMethods.DistanceXZ(windowPosition.position, borderControlTarget.transform.position) < targetRadius;
 		
 		// Tell the border control point that this car is now in range (passedInspection flag is to avoid duplicate registration)
 		if (!passedInspection && !borderControlTarget.CarRegistered(car) && inTargetRange) {
@@ -78,16 +78,8 @@ public class AiCar : MonoBehaviour {
 
 	private void DespawnCheck() {
 		// Destroy this car if it gets too close (defined by despawnRadius) to the despawn point
-		if (DistanceXZ(windowPosition.position, despawnTarget.position) < despawnRadius) {
+		if (HelperMethods.DistanceXZ(windowPosition.position, despawnTarget.position) < despawnRadius) {
 			Destroy(gameObject);
 		}
-	}
-
-	private float DistanceXZ(Vector3 a, Vector3 b) {
-		// Calculate distance in XZ plane, discarding vertical distance
-		Vector2 a2 = new Vector2(a.x, a.z);
-		Vector2 b2 = new Vector2(b.x, b.z);
-
-		return Vector2.Distance(a2, b2);
 	}
 }

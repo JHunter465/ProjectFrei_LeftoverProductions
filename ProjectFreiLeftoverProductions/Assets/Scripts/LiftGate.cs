@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class LiftGate : MonoBehaviour {
@@ -71,6 +72,17 @@ public class LiftGate : MonoBehaviour {
 		StartCoroutine(CloseGateWithTimeout(time));
 	}
 
+	public void OpenGate(Func<bool> predicate) {
+		open = true;
+		StartCoroutine(CloseGateWithCondition(predicate));
+	}
+
+	private IEnumerator CloseGateWithCondition(Func<bool> predicate) {
+		// Wait until condition given by predicate is true to close the gate
+		yield return new WaitUntil(predicate);
+		open = false;
+	}
+	
 	private IEnumerator CloseGateWithTimeout(float time) {
 		// Wait till the time it takes to inspect an ai car has passed (debug version counts down in console)
 		if (Debug.isDebugBuild) {

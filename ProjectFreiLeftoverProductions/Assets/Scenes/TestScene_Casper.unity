@@ -98,7 +98,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 112000000, guid: ef90dce9d46807348b5c90cf98454508,
     type: 2}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -550,6 +550,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   open: 1
+  lm: {fileID: 0}
+  bc: 0
+  inclusive: 0
+  value: 0
+  rangeMin: 0
+  rangeMax: 0
 --- !u!65 &1219938520
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -747,6 +753,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   open: 0
+  lm: {fileID: 0}
+  bc: 0
+  inclusive: 0
+  value: 0
+  rangeMin: 0.79
+  rangeMax: -8.58
 --- !u!4 &1604362353
 Transform:
   m_ObjectHideFlags: 0
