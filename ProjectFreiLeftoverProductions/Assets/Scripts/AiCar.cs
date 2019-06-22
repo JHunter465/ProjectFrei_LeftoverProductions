@@ -3,20 +3,27 @@ using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 
 [RequireComponent(typeof(Car))]
+[RequireComponent(typeof(AudioSource))]
 public class AiCar : MonoBehaviour {
 	[SerializeField] private BorderControl borderControlTarget;
 	[SerializeField] private float targetRadius = 0.4f;
+	
 	[Space(10)] [SerializeField] private Transform despawnTarget;
 	[SerializeField] private float despawnRadius = 0.5f;
+	
 	[Space(10)] [SerializeField] private Transform windowPosition;
+	
 	[Space(10)] [SerializeField] private Transform front;
 	[SerializeField] private float distanceToNextCar;
 	[SerializeField] private LayerMask aiLayer;
+	
+	[Space(10)] [SerializeField] private AudioClip honkAudio;
 
 	private bool inTargetRange;
 	private bool passedInspection;
 
 	private Car car;
+	private new AudioSource audio;
 
 	private void OnValidate() {
 		// Do not allow despawnRadius and targetRadius values below zero
@@ -26,6 +33,7 @@ public class AiCar : MonoBehaviour {
 
 	private void Awake() {
 		car = GetComponent<Car>();
+		audio = GetComponent<AudioSource>();
 	}
 
 	private void Update() {
@@ -81,5 +89,9 @@ public class AiCar : MonoBehaviour {
 		if (HelperMethods.DistanceXZ(windowPosition.position, despawnTarget.position) < despawnRadius) {
 			Destroy(gameObject);
 		}
+	}
+
+	public void Honk() {
+		audio.PlayOneShot(honkAudio);
 	}
 }
