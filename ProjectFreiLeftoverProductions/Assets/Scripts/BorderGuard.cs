@@ -15,7 +15,7 @@ public class BorderGuard : MonoBehaviour {
 	private float targetSuspicion;                 // Used to lerp to new suspicion
 	[SerializeField] private float meterSpeed = 1; // Lerp speed setting
 
-	[Space(10)] [SerializeField] private float honkingSuspiciousness = 20;
+	[Space(10)] [SerializeField] private float honkingSuspiciousness = 10;
 	
 	private bool active;         // Defines if the border guard is active (i.e. looking for suspicious objects)
 	private ItemWatcher watcher; // Used to obtain all items in the car

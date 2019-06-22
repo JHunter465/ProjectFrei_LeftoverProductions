@@ -48,11 +48,6 @@ public class PlayerCar : MonoBehaviour {
 			if (! aiCar) throw new InvalidOperationException("Collision object on AI car layer doesn't have AiCar component");
 
 			aiCar.Honk();
-
-			// Let the guard know someone honked to increase suspicion
-			BorderGuard guard = GameObject.FindWithTag(BorderGuard._borderGuardTag).GetComponent<BorderGuard>();
-			guard.RegisterHonking();
-
 		}
 	}
 }
