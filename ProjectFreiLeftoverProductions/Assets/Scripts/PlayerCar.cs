@@ -42,11 +42,17 @@ public class PlayerCar : MonoBehaviour {
 
 	private void OnCollisionEnter(Collision other) {
 		if (other.gameObject.layer == LayerMask.NameToLayer("AiCar")) {
-			AiCar pc = other.gameObject.GetComponent<AiCar>();
+			AiCar aiCar = other.gameObject.GetComponent<AiCar>();
 			
-			if (! pc) throw new InvalidOperationException("Collision object on AI car layer doesn't have AiCar component");
+			// AiCar component must exist on an object on the AiCar layer.
+			if (! aiCar) throw new InvalidOperationException("Collision object on AI car layer doesn't have AiCar component");
 
-			pc.Honk();
+			aiCar.Honk();
+
+			// Let the guard know someone honked to increase suspicion
+			BorderGuard guard = GameObject.FindWithTag(BorderGuard._borderGuardTag).GetComponent<BorderGuard>();
+			guard.RegisterHonking();
+
 		}
 	}
 }
