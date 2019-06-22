@@ -10,6 +10,8 @@ namespace LevelSequences {
 		[SerializeField] private Container passportContainer;
 		[SerializeField] private float passportWaitSuspicion = 20;
 		[SerializeField] private float passportWaitRefreshTime = 5;
+		
+//		[Space(10), SerializeField] private 
 
 		public override void StartSequence(PlayerBorderControl pbc) {
 			this.pbc = pbc;

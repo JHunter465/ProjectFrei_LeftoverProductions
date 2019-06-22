@@ -1,8 +1,11 @@
+using System;
 using UnityEngine;
 using Valve.VR.InteractionSystem;
 
 [RequireComponent(typeof(Car))]
 public class PlayerCar : MonoBehaviour {
+	public const string _playerCarTag = "PlayerCar";
+	
 	[SerializeField] private LinearMapping windowMapping;
 	[SerializeField] private float windowDownValue = .1f;
 
@@ -35,5 +38,16 @@ public class PlayerCar : MonoBehaviour {
 				borderControlTarget.RegisterCar(car);
 			}
 //		}
+	}
+
+	private void OnCollisionEnter(Collision other) {
+		if (other.gameObject.layer == LayerMask.NameToLayer("AiCar")) {
+			AiCar aiCar = other.gameObject.GetComponent<AiCar>();
+			
+			// AiCar component must exist on an object on the AiCar layer.
+			if (! aiCar) throw new InvalidOperationException("Collision object on AI car layer doesn't have AiCar component");
+
+			aiCar.Honk();
+		}
 	}
 }

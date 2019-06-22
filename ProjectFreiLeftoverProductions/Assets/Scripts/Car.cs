@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using Vector3 = UnityEngine.Vector3;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Car : MonoBehaviour {

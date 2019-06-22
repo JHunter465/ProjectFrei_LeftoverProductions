@@ -3,6 +3,8 @@ using System.Linq;
 using UnityEngine;
 
 public class BorderGuard : MonoBehaviour {
+	public const string _borderGuardTag = "BorderGuard";
+	
 	[SerializeField] private GuardEyes eyePos;         // Position of the guard's eyes
 	[SerializeField] private LayerMask containerLayer; // Layermask for container colliders
 
@@ -13,8 +15,14 @@ public class BorderGuard : MonoBehaviour {
 	private float targetSuspicion;                 // Used to lerp to new suspicion
 	[SerializeField] private float meterSpeed = 1; // Lerp speed setting
 
+	[Space(10)] [SerializeField] private float honkingSuspiciousness = 10;
+	
 	private bool active;         // Defines if the border guard is active (i.e. looking for suspicious objects)
 	private ItemWatcher watcher; // Used to obtain all items in the car
+
+	private void Awake() {
+		tag = _borderGuardTag;
+	}
 
 	private void ClampMeterSpeed() {
 		// Set meter speed to 1 if below 0.01 (don't allow (near) zero values)
@@ -73,7 +81,7 @@ public class BorderGuard : MonoBehaviour {
 
 	private void CheckSuspicion() {
 		// If the suspicion is over 99, you lost the game
-		// 99 feels better than 100 because the last 1% is approached very slowly due to lerp
+		// 99 feels better for the player than 100 because the last 1% is approached very slowly due to lerp
 		if (SuspicionLevel > 99) {
 			LevelManager mgr = GameObject.FindWithTag(LevelManager._lvlMgrTag).GetComponent<LevelManager>();
 			mgr.GameOver();
@@ -98,5 +106,9 @@ public class BorderGuard : MonoBehaviour {
 
 	public void Activate() {
 		active = true;
+	}
+
+	public void RegisterHonking() {
+		AddSuspicion(honkingSuspiciousness);
 	}
 }
