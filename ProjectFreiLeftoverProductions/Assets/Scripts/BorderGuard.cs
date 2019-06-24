@@ -74,7 +74,7 @@ public class BorderGuard : MonoBehaviour {
 			UpdateItemVisibility();
 
 			foreach (InteractableItem item in watcher.Items.Where(item => watcher.IsVisible(item))) {
-				// TODO Do stuff with the visible items here
+				AddSuspicion(item.Suspiciousness);
 			}
 		}
 	}

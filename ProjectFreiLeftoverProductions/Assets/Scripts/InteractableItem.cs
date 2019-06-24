@@ -4,7 +4,10 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class InteractableItem : MonoBehaviour {
 	[SerializeField] private float moveThreshold = 0.1f;
-	
+
+	[SerializeField] private float suspiciousness;
+	public float Suspiciousness { get; }
+
 	private Vector3 startPos;
 	private ItemWatcher watcher;
 
