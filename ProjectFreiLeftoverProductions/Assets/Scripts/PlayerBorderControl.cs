@@ -1,7 +1,5 @@
-using System.Collections;
 using LevelSequences;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class PlayerBorderControl : BorderControl {
 	protected override void StartPlayerInspection() {

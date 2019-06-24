@@ -5,11 +5,7 @@
 //=============================================================================
 
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using System.ComponentModel;
-using Valve.VR;
 using System.IO;
 
 namespace Valve.VR
