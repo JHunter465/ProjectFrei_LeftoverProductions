@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class BorderControl : Target {
 	private readonly Queue<Car> queue = new Queue<Car>();
-	private Car currentCar;
+	public Car currentCar;
 
 	[SerializeField] private float aiInspectionTime = 5;
 	[SerializeField] private LiftGate liftGate;
 	[SerializeField] private float liftGateOpenTime = 3;
+	[SerializeField] private float liftGateOpenTimePlayer = 10;
 
 	public LiftGate LiftGate => liftGate;
 
@@ -34,11 +35,18 @@ public class BorderControl : Target {
 
 	private void StartInspection() {
 		if (currentCar.IsPlayerCar) {
-			// TODO Start player inspection
+			StartPlayerInspection();
 		}
-		else {
+		else if (currentCar.IsAiCar) {
 			StartAiInspection();
 		}
+		else {
+			Debug.LogError("Missing controller component (AiCar or PlayerCar)");
+		}
+	}
+
+	protected virtual void StartPlayerInspection() {
+		throw new System.NotImplementedException();
 	}
 
 	private void StartAiInspection() {
@@ -65,12 +73,19 @@ public class BorderControl : Target {
 
 		// Set inspectionPassed flag on the AI car so it knows to move along
 		currentCar.GetComponent<AiCar>().SetInspectionPassed();
-		ReleaseCar();
+		ReleaseCar(false);
 	}
 
-	private void ReleaseCar() {
-		// Open lift gate
-		liftGate.OpenGate(liftGateOpenTime);
+	protected void ReleaseCar(bool waitUntilPlayerPassed) {
+		if (waitUntilPlayerPassed) {
+			// Open lift gate waiting until car passed
+//			liftGate.OpenGate(() => currentCar.GetComponent<PlayerCar>().ExitedBorderControl); TODO fix predicate opening
+			liftGate.OpenGate(liftGateOpenTimePlayer);
+		}
+		else {
+			// Open lift gate timed
+			liftGate.OpenGate(liftGateOpenTime);
+		}
 
 		// Remove car
 		currentCar = null;

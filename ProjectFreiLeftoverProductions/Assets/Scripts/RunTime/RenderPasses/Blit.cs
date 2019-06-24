@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-using UnityEngine.Serialization;
-
 namespace UnityEngine.Rendering.LWRP
 {
     public class Blit : ScriptableRendererFeature

@@ -9,7 +9,7 @@ public class CarControls : MonoBehaviour {
 	}
 
 	private void FixedUpdate() {
-		// TODO replace with vr controller trigger as scaling value
+		// TODO replace with vr controller trigger as scaling value?
 		if (Input.GetKey(KeyCode.Space)) {
 			car.Accelerate();
 		}

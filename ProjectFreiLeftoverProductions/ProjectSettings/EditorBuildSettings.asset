@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: d1c3109bdb54ad54c8a2b2838528e640
+  - enabled: 1
+    path: Assets/Scenes/CarMovement_Test.unity
+    guid: 8d5bc6c5f7b7921498a5086169669e9b
+  - enabled: 1
+    path: Assets/Scenes/Death.unity
+    guid: 1d138aa7afd81d74b9d4ed6fcc8a96a5
   m_configObjects: {}
