@@ -43,6 +43,7 @@ public class InteractableItem : MonoBehaviour {
 	public void MoveToStartPos() {
 		try {
 			transform.position = startPos;
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
 		}
 		catch (NullReferenceException e) {
 			throw new InvalidOperationException("No start position set");
