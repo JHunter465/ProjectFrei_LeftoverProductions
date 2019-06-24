@@ -1294,11 +1294,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   guard: {fileID: 134918865}
   passportQuestion: 
+  passportLostSuspicion: 20
   passport: {fileID: 1525275673}
   passportContainer: {fileID: 2021535298}
   passportWaitSuspicion: 25
   passportWaitRefreshTime: 1
-  passportAnswer: 
+  registrationPapersQuestion: 
+  papersLostSuspicion: 20
+  papers: {fileID: 0}
+  papersContainer: {fileID: 0}
+  papersWaitSuspicion: 20
+  papersWaitRefreshTime: 5
+  manifestQuestion: 
+  manifestLostSuspicion: 20
+  manifest: {fileID: 0}
+  manifestContainer: {fileID: 0}
+  manifestWaitSuspicion: 20
+  manifestWaitRefreshTime: 5
 --- !u!114 &811722687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2054,7 +2066,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 811722686}
-        m_MethodName: set_tag
+        m_MethodName: SetPassportAnswer
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2517,7 +2529,7 @@ PrefabInstance:
     - target: {fileID: 3596042048874317615, guid: 5c252d721bbc2b9448588c48c5fe74dd,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.09
+      value: -0.707
       objectReference: {fileID: 0}
     - target: {fileID: 3596042048874317615, guid: 5c252d721bbc2b9448588c48c5fe74dd,
         type: 3}
@@ -2561,6 +2573,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3596042048874317612, guid: 5c252d721bbc2b9448588c48c5fe74dd,
         type: 3}
+      propertyPath: honkAudio.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596042048874317612, guid: 5c252d721bbc2b9448588c48c5fe74dd,
+        type: 3}
       propertyPath: borderControlTarget
       value: 
       objectReference: {fileID: 811722687}
@@ -2573,11 +2590,21 @@ PrefabInstance:
         type: 3}
       propertyPath: honkAudio
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596042048874317612, guid: 5c252d721bbc2b9448588c48c5fe74dd,
+        type: 3}
+      propertyPath: playerLayer.m_Bits
+      value: 2048
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596042048874317612, guid: 5c252d721bbc2b9448588c48c5fe74dd,
+        type: 3}
+      propertyPath: honkAudio.Array.data[0]
+      value: 
       objectReference: {fileID: 8300000, guid: 67f531f7d0ceb6146931b823f9baa0de, type: 3}
     - target: {fileID: 3596042048874317613, guid: 5c252d721bbc2b9448588c48c5fe74dd,
         type: 3}
       propertyPath: maxSpeed
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c252d721bbc2b9448588c48c5fe74dd, type: 3}
@@ -3076,7 +3103,7 @@ GameObject:
   - component: {fileID: 1796471231}
   - component: {fileID: 1796471230}
   - component: {fileID: 1796471233}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: PLAYER CAR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3149,7 +3176,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1796471225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.499, z: -0.062}
+  m_LocalPosition: {x: 0, y: 0.499, z: -4.631}
   m_LocalScale: {x: 1, y: 1, z: 2.1599}
   m_Children:
   - {fileID: 2133315165}
