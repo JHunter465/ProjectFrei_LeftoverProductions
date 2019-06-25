@@ -62,7 +62,11 @@ namespace LevelSequences {
 		}
 
 		private IEnumerator WaitForPassportAnswer() {
+            // TRGIGGER UI
+            // uiObject.enabled = true;
 			yield return new WaitUntil(() => passportAnswer != null);
+
+            // DEACTIVATE UI
 
 			if (passportAnswer == "lost") {
 				guard.AddSuspicion(passportLostSuspicion);
@@ -126,6 +130,7 @@ namespace LevelSequences {
 
 		private void End() {
 			pbc.ReleasePlayerCar();
+
 		}
 	}
 }

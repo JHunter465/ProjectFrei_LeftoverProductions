@@ -183,7 +183,7 @@ MonoBehaviour:
     m_Bits: 1024
   suspicionLevel: 0
   meterSpeed: 1
-  honkingSuspiciousness: 20
+  honkingSuspiciousness: 100
 --- !u!1 &156596389
 GameObject:
   m_ObjectHideFlags: 0
@@ -1433,6 +1433,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   guard: {fileID: 134918865}
+  emptyAngle: -90
+  fullAngle: 90
 --- !u!1 &956283943
 GameObject:
   m_ObjectHideFlags: 0
@@ -2073,7 +2075,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: lost / yes
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -2221,6 +2223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveThreshold: 0.1
+  suspiciousness: 0
 --- !u!54 &1525275674
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2529,7 +2532,7 @@ PrefabInstance:
     - target: {fileID: 3596042048874317615, guid: 5c252d721bbc2b9448588c48c5fe74dd,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.707
+      value: -9.15
       objectReference: {fileID: 0}
     - target: {fileID: 3596042048874317615, guid: 5c252d721bbc2b9448588c48c5fe74dd,
         type: 3}
@@ -2599,6 +2602,11 @@ PrefabInstance:
     - target: {fileID: 3596042048874317612, guid: 5c252d721bbc2b9448588c48c5fe74dd,
         type: 3}
       propertyPath: honkAudio.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 67f531f7d0ceb6146931b823f9baa0de, type: 3}
+    - target: {fileID: 3596042048874317612, guid: 5c252d721bbc2b9448588c48c5fe74dd,
+        type: 3}
+      propertyPath: honkAudio.Array.data[1]
       value: 
       objectReference: {fileID: 8300000, guid: 67f531f7d0ceb6146931b823f9baa0de, type: 3}
     - target: {fileID: 3596042048874317613, guid: 5c252d721bbc2b9448588c48c5fe74dd,
