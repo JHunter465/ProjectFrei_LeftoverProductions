@@ -40,7 +40,7 @@ public class LiftGate : MonoBehaviour {
 				State = LiftGateState.Opening;
 			}
 
-			trafficLight.State = Stoplight.TraficLightState.Green;
+			if (trafficLight) trafficLight.State = Stoplight.TraficLightState.Green;
 		}
 		else {
 			// Set state to idle if closeAngle was reached
@@ -53,7 +53,7 @@ public class LiftGate : MonoBehaviour {
 				State = LiftGateState.Closing;
 			}
 
-			trafficLight.State = Stoplight.TraficLightState.Red;
+            if (trafficLight) trafficLight.State = Stoplight.TraficLightState.Red;
 		}
 
 		// Move to openAngle if state is opening, move to closeAngle if state is closing, do nothing if idle
